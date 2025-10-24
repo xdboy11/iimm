@@ -49,6 +49,9 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.lab1.executor": "Run",
+    "Python.lab2.executor": "Run",
+    "Python.lab2_classif.executor": "Run",
+    "Python.lab2_regress.executor": "Run",
     "Python.ph (2).executor": "Run",
     "Python.ph.executor": "Run",
     "Python.placehold.executor": "Run",
@@ -88,5 +91,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test-commit" />
     <option name="LAST_COMMIT_MESSAGE" value="Test-commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lab2_classif.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -63,7 +63,7 @@ print(df_final.head(5))
 #Колонку PassengerId не преобразуем по очевидным причинам
 #Колонка Name, теоретически не должно иметь никакой кореляции с тем, пропал ли человек, поэтому ее также не преобразуем
 
-df_final.to_csv("./data/processed_train2.csv", index=False)
+#df_final.to_csv("./data/processed_train2.csv", index=False)
 
 
 

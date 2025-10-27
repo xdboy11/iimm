@@ -8,7 +8,6 @@ df = pd.read_csv("./data/train.csv")
 print(df.head(10)) # вывод первых 10 элементов датасета
 
 nan_matrix_sum_before = df.isnull().sum()
-# 5 10 15 2 14 36 17 | 2 5 10 14 15 17 36 .mean
 Age_median = df['Age'].median()
 
 RoomService_median = df['RoomService'].median()
@@ -39,26 +38,32 @@ print("кол-во пропусков ДО  ПОСЛЕ")
 for col in df.columns:
     print(f"{col:<15} {nan_matrix_sum_before[col]:>3} -> {nan_matrix_sum_after[col]}")
 
-#Создание списка для Z-оценки
+#Создание списка для minmaxscaler
 expense_columns = list(median_values.keys())
 expense_columns.remove('Age')
 
-standard_scaler = StandardScaler()
-df[expense_columns] = standard_scaler.fit_transform(df[expense_columns])
+scaler = MinMaxScaler()
+df[expense_columns] = scaler.fit_transform(df[expense_columns])
+
+print(df.head(10))
+
+#standard_scaler = StandardScaler()
+#df[expense_columns] = standard_scaler.fit_transform(df[expense_columns])
 
 #Категориальные колонки с малым количеством вариантов преобразуем с помощью OHE
 OHE_columns = ['HomePlanet', 'Destination']
 df_final = pd.get_dummies(df, columns=OHE_columns, drop_first=True)
 #У Cabin много значений, преобразуем последовательностью чисел
-Cabin_encoder = LabelEncoder()
-df_final['Cabin_encoded'] = Cabin_encoder.fit_transform(df['Cabin'])
+#Cabin_encoder = LabelEncoder()
+#df_final['Cabin_encoded'] = Cabin_encoder.fit_transform(df['Cabin'])
 
-df_final = df_final.drop(['Cabin', 'Name', 'PassengerId'], axis=1)
+df_final = df_final.drop(['Cabin', 'Name'], axis=1)
 
+print(df_final.head(5))
 #Колонку PassengerId не преобразуем по очевидным причинам
 #Колонка Name, теоретически не должно иметь никакой кореляции с тем, пропал ли человек, поэтому ее также не преобразуем
 
-#df_final.to_csv("./data/processed_train2.csv", index=False)
+df_final.to_csv("./data/processed_train2.csv", index=False)
 
 
 

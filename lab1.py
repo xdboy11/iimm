@@ -10,6 +10,7 @@ print(df.head(10)) # вывод первых 10 элементов датасе�
 nan_matrix_sum_before = df.isnull().sum()
 # 5 10 15 2 14 36 17 | 2 5 10 14 15 17 36 .mean
 Age_median = df['Age'].median()
+
 RoomService_median = df['RoomService'].median()
 
 median_values = {
@@ -45,25 +46,19 @@ expense_columns.remove('Age')
 standard_scaler = StandardScaler()
 df[expense_columns] = standard_scaler.fit_transform(df[expense_columns])
 
-#Возраст нормализуем мин-макс масштабированием
-age_scaler = MinMaxScaler()
-df[['Age']] = age_scaler.fit_transform(df[['Age']])
-
 #Категориальные колонки с малым количеством вариантов преобразуем с помощью OHE
-OHE_columns = ['HomePlanet', 'CryoSleep', 'Destination', 'VIP']
+OHE_columns = ['HomePlanet', 'Destination']
 df_final = pd.get_dummies(df, columns=OHE_columns, drop_first=True)
-
 #У Cabin много значений, преобразуем последовательностью чисел
 Cabin_encoder = LabelEncoder()
 df_final['Cabin_encoded'] = Cabin_encoder.fit_transform(df['Cabin'])
 
-df_final = df_final.drop("Name")
-df_final = df_final.drop("PassengerId")
-df_final.head()
+df_final = df_final.drop(['Cabin', 'Name', 'PassengerId'], axis=1)
+
 #Колонку PassengerId не преобразуем по очевидным причинам
 #Колонка Name, теоретически не должно иметь никакой кореляции с тем, пропал ли человек, поэтому ее также не преобразуем
 
-#df_final.to_csv("./data/processed_train.csv", index=False)
+#df_final.to_csv("./data/processed_train2.csv", index=False)
 
 
 

@@ -8,7 +8,7 @@ df = pd.read_csv("./data/train.csv")
 print(df.head(10)) # вывод первых 10 элементов датасета
 
 nan_matrix_sum_before = df.isnull().sum()
-
+# 5 10 15 2 14 36 17 | 2 5 10 14 15 17 36 .mean
 Age_median = df['Age'].median()
 RoomService_median = df['RoomService'].median()
 
@@ -57,6 +57,9 @@ df_final = pd.get_dummies(df, columns=OHE_columns, drop_first=True)
 Cabin_encoder = LabelEncoder()
 df_final['Cabin_encoded'] = Cabin_encoder.fit_transform(df['Cabin'])
 
+df_final = df_final.drop("Name")
+df_final = df_final.drop("PassengerId")
+df_final.head()
 #Колонку PassengerId не преобразуем по очевидным причинам
 #Колонка Name, теоретически не должно иметь никакой кореляции с тем, пропал ли человек, поэтому ее также не преобразуем
 

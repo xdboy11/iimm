@@ -4,14 +4,27 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
+#Обучающая выборка:
+#  MSE: 0.0299
+#  MAE: 0.1350
+#Тестовая выборка:
+#  MSE: 0.0314
+#  RMSE: 0.1773
+#  MAE: 0.1398
+
+#Обучающая выборка:
+#  MSE: 187.9332
+#  MAE: 10.6775
+#Тестовая выборка:
+#  MSE: 196.2622
+#  RMSE: 14.0094
+#  MAE: 10.9933
 
 pd.set_option('display.max_columns', None)
-df = pd.read_csv("./data/processed_train.csv")
+df = pd.read_csv("./data/processed_train2.csv")
 
-df2 = df.drop(['Cabin', 'Name'], axis=1)
-
-X = df2.drop('Age', axis=1)
-y = df2['Age']
+X = df.drop('Age', axis=1)
+y = df['Age']
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,

@@ -4,39 +4,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
-#Обучающая выборка:
-#  MSE: 0.0299
-#  MAE: 0.1350
-#Тестовая выборка:
-#  MSE: 0.0314
-#  RMSE: 0.1773
-#  MAE: 0.1398
-
-#Обучающая выборка:
-#  MSE: 187.9332
-#  MAE: 10.6775
-#Тестовая выборка:
-#  MSE: 196.2622
-#  RMSE: 14.0094 - x
-#  MAE: 10.9933
-
-#Обучающая выборка:
-#  MSE: 186.3516
-#  MAE: 10.6657
-#Тестовая выборка:
-#  MSE: 196.1819
-#  RMSE: 14.0065
-#  MAE: 11.0474
-
-#0.2%
-
 pd.set_option('display.max_columns', None)
-df = pd.read_csv("./data/processed_train.csv")
-df2 = pd.read_csv("./data/processed_train2.csv")
+df = pd.read_csv("./data/train.lab1.new.csv")
 
-df['Age'] = df2['Age']
-
-df = df.drop(['Cabin', 'Name'], axis = 1)
+df = df.drop(['Name', 'Ticket'], axis=1)
 
 X = df.drop('Age', axis=1)
 y = df['Age']
@@ -70,3 +41,29 @@ print(f"Тестовая выборка:")
 print(f"  MSE: {mse_test:.4f}")
 print(f"  RMSE: {rmse_test:.4f}")
 print(f"  MAE: {mae_test:.4f}")
+
+#Обучающая выборка:
+#  MSE: 0.0299
+#  MAE: 0.1350
+#Тестовая выборка:
+#  MSE: 0.0314
+#  RMSE: 0.1773
+#  MAE: 0.1398
+
+#Обучающая выборка:
+#  MSE: 187.9332
+#  MAE: 10.6775
+#Тестовая выборка:
+#  MSE: 196.2622
+#  RMSE: 14.0094 - x
+#  MAE: 10.9933
+
+#Обучающая выборка:
+#  MSE: 186.3516
+#  MAE: 10.6657
+#Тестовая выборка:
+#  MSE: 196.1819
+#  RMSE: 14.0065
+#  MAE: 11.0474
+
+#0.2%

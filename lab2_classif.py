@@ -23,10 +23,6 @@ y_pred = logreg_model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Точность: {accuracy:.4f} ({accuracy:.1%})")
 
-print("\nКлассификация:")
-print(classification_report(y_test, y_pred))
-
-
 print("Матрица ошибок:")
 print(confusion_matrix(y_test, y_pred))
 

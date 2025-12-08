@@ -60,6 +60,7 @@
     "Python.ph (2).executor": "Run",
     "Python.ph.executor": "Run",
     "Python.placehold.executor": "Run",
+    "Python.regression.executor": "Run",
     "Python.test.executor": "Run",
     "Python.testing.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -96,5 +97,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test-commit" />
     <option name="LAST_COMMIT_MESSAGE" value="Test-commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/classififcation.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

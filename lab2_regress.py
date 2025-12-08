@@ -5,12 +5,12 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 pd.set_option('display.max_columns', None)
-df = pd.read_csv("./data/train.lab1.new.csv")
+df = pd.read_csv("./data/processed_data.csv")
 
-df = df.drop(['Name', 'Ticket'], axis=1)
+df = df.drop(['id_number'], axis=1)
 
-X = df.drop('Age', axis=1)
-y = df['Age']
+X = df.drop('charges', axis=1)
+y = df['charges']
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,

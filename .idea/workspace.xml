@@ -49,6 +49,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.classififcation.executor": "Run",
+    "Python.forest_classif.executor": "Run",
     "Python.lab1.executor": "Run",
     "Python.lab2.executor": "Run",
     "Python.lab2_classif.executor": "Run",

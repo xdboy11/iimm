@@ -59,18 +59,12 @@ def generate_data(rows_amount):
     # Генерация признаков
     X = np.random.randint(0, 2, size=(rows_amount, 12))
     np.savetxt("data/dataIn.txt", X, fmt="%d")
-    print(f"Признаки сохранены в data/dataIn.txt")
 
     # Генерация меток
     Y = np.random.randint(0, 2, rows_amount)
     y_ohe = np.zeros((rows_amount, 2))
     y_ohe[np.arange(rows_amount), Y] = 1
     np.savetxt("data/dataOut.txt", y_ohe, fmt="%d")
-
-    print(f"Метки сохранены в data/dataOut.txt")
-    print(f"Размерность X: {X.shape}")
-    print(f"Размерность y_ohe: {y_ohe.shape}")
-    print()
 
     return X, y_ohe
 
@@ -83,29 +77,14 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=42
 )
 
-print(f"Разделение данных:")
-print(f"  X_train: {X_train.shape}")
-print(f"  X_test:  {X_test.shape}")
-print(f"  y_train: {y_train.shape}")
-print(f"  y_test:  {y_test.shape}")
-print()
-
-# Масштабирование признаков
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-print("Масштабирование признаков выполнено")
-print()
 
 # Преобразование меток из one-hot encoding в обычный формат
 y_train = np.argmax(y_train, axis=1)
 y_test = np.argmax(y_test, axis=1)
-
-print(f"Метки преобразованы из one-hot encoding:")
-print(f"  y_train shape: {y_train.shape}")
-print(f"  y_test shape:  {y_test.shape}")
-print()
 
 #Создание и обучение модели MLP
 
@@ -120,8 +99,6 @@ mlp_classifier = MLPClassifier(
 
 mlp_classifier.fit(X_train, y_train)
 
-#оценка модели
-
 # Предсказания на тестовой выборке
 y_pred_test = mlp_classifier.predict(X_test)
 y_pred_proba = mlp_classifier.predict_proba(X_test)[:, 1]
@@ -131,7 +108,6 @@ FPR, TPR, _ = roc_curve(y_test, y_pred_proba)
 auc = roc_auc_score(y_test, y_pred_proba)
 accuracy = accuracy_score(y_test, y_pred_test)
 
-# Вывод метрик
 print(f"  AUC:        {auc:.4f}")
 print(f"  Accuracy:   {accuracy:.4f}")
 print()
